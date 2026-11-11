@@ -1,0 +1,25 @@
+DROP TABLE IF EXISTS Enrollments;
+DROP TABLE IF EXISTS Students;
+DROP TABLE IF EXISTS Courses;
+
+CREATE TABLE Students (
+StudentID INTEGER PRIMARY KEY,
+FirstName VarChar(50) NOT NULL,
+LastName VarChar(50) NOT NULL,
+Email VarChar(100) UNIQUE NOT NULL
+);
+
+CREATE TABLE Courses (
+CourseID INT PRIMARY KEY,
+CourseCode VARCHAR(10) UNIQUE NOT NULL,
+Credits INT NOT NULL
+);
+
+CREATE TABLE Enrollments (
+EnrollmentID INTEGER PRIMARY KEY,
+RegistrationDate TEXT NOT NULL,
+StudentID INT,
+CourseID INT,
+FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
+FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)
+);

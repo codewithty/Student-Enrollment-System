@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enrollments</title>
+</head>
+<body>
+    <h1>Enrollments</h1>
+    <form action="/enrollments/add" method="POST">
+    <select name="student_id">
+        {% for s in students %}
+        <option value="{{ s.student_id }}">{{ s.first_name }} {{ s.last_name }}</option>
+        {% endfor %}
+    </select>
+    <select name="course_id">
+        {% for c in courses %}
+        <option value="{{ c.course_id }}">{{ c.course_code   }}</option>
+        {% endfor %}
+    </select>
+    <input type="date" name="registration_date" required>
+    <button type="submit">Enroll</button>
+</form>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Student</th>
+            <th>Course</th>
+            <th>Date</th>
+        </tr>
+        {% for e in enrollments %}
+        <tr>
+            <td>{{ e.enrollment_id }}</td>
+            <td>{{ student_names.get(e.student_id, "Unknown") }}</td>
+            <td>{{ course_codes.get(e.course_id, "Unknown") }}</td>
+            <td>{{ e.registration_date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

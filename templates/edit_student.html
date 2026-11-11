@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Student</title>
+</head>
+<body>
+  <h1>Edit Student</h1>
+  <form method="POST" action="/students/edit/{{ s.student_id }}">
+   <input name="first_name" value="{{ s.first_name }}">
+  <input name="last_name" value="{{ s.last_name }}">
+  <input name="email" value="{{ s.email }}">
+    <button type="submit">Save</button>
+  </form>
+  <a href="/students">Cancel</a>
+</body>
+</html>

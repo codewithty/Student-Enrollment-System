@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Courses</title>
+</head>
+<body>
+  <h1>Courses</h1>
+
+  <form method="POST" action="/courses/add">
+  <input name="course_id" type="number" placeholder="ID" required>
+  <input name="course_code" placeholder="Course code" required>
+  <input name="credits" type="number" placeholder="Credits" required>
+  <button type="submit">Add course</button>
+</form>
+
+  <table border="1">
+    <tr>
+      <th>ID</th>
+      <th>Course Code</th>
+      <th>Credits</th>
+    </tr>
+    {% for c in courses %}
+    <tr>
+      <td>{{ c.course_id }}</td>
+      <td>{{ c.course_code }}</td>
+      <td>{{ c.credits }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
